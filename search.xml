@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>使用七牛云同步思源笔记（全指南）</title>
+      <link href="/qiniu-siyuan.html"/>
+      <url>/qiniu-siyuan.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>七牛云有一定的<a href="https://developer.qiniu.com/af/kb/1574/free-credit-information?category=kb" rel="external nofollow noreferrer">免费额度</a>，完全够用来同步笔记</p></blockquote><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul><li>一个已经<strong>实名</strong>且<strong>绑定邮箱</strong>的七牛云账号</li><li>一个七牛云储存空间，需绑定备案域名</li><li>一对密钥（<a href="https://portal.qiniu.com/user/key" rel="external nofollow noreferrer">点击前往创建</a>）</li></ul><p>不满足以上条件的请查看官网指南：<a href="https://developer.qiniu.com/kodo/4263/operational-guidelines-for-the-new-bucket" rel="external nofollow noreferrer">对象存储&gt; 快速入门 &gt; 控制台用户指南 &gt;新建存储空间</a> </p><h3 id="填写配置"><a href="#填写配置" class="headerlink" title="填写配置"></a>填写配置</h3><p>做好准备工作后，我们就可以来填写思源笔记的同步配置了。</p><p>首先，在 设置&gt;云端 中的云端存储服务提供商选择 <strong>S3</strong>，需要填写的内容参考下表。</p><table><thead><tr><th>需要填写的项</th><th>填写内容</th><th></th></tr></thead><tbody><tr><td>Endpoint</td><td>请对照文末的表填写（比如我创建的是华东-浙江的储存空间，<br />则我这里填写：s3-cn-east-1.qiniucs.com）<br /></td><td></td></tr><tr><td>Access Key</td><td>密钥中的 AK &#x2F; AccessKey</td><td></td></tr><tr><td>Secret Key</td><td>对应密钥的 SK &#x2F; SecretKey</td><td></td></tr><tr><td>Bucket</td><td>储存空间的名称</td><td></td></tr><tr><td>Region</td><td>请对照文末的表填写（比如我创建的是华东-浙江的储存空间，<br />则我这里填写：cn-east-1）</td><td></td></tr><tr><td>Timeout (s)</td><td>10（如果网络状况不好，可以填大一点）</td><td></td></tr></tbody></table><p>填写好之后，就可以打开<strong>启用云端同步</strong>了。</p><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul><li>所有需要同步的设备需要使用同样的数据仓库密钥</li><li>需要备案域名（一个月内不用）</li></ul><table><thead><tr><th>存储区域</th><th>区域简称</th><th>访问 Endpoint<br /></th><th></th></tr></thead><tbody><tr><td>华东-浙江</td><td>cn-east-1</td><td>s3-cn-east-1.qiniucs.com<br /></td><td></td></tr><tr><td>华东-浙江2</td><td>cn-east-2</td><td>s3-cn-east-2.qiniucs.com<br /></td><td></td></tr><tr><td>华北-河北</td><td>cn-north-1</td><td>s3-cn-north-1.qiniucs.com<br /></td><td></td></tr><tr><td>华南-广东</td><td>cn-south-1</td><td>s3-cn-south-1.qiniucs.com<br /></td><td></td></tr><tr><td>北美-洛杉矶</td><td>us-north-1</td><td>s3-us-north-1.qiniucs.com<br /></td><td></td></tr><tr><td>亚太-新加坡（原东南亚）</td><td>ap-southeast-1</td><td>s3-ap-southeast-1.qiniucs.com<br /></td><td></td></tr></tbody></table><p>参考：<a href="https://developer.qiniu.com/kodo/4088/s3-access-domainname" rel="external nofollow noreferrer">七牛云开发者中心&gt;对象存储 &gt; 使用指南 &gt; 开发指南 &gt; AWS S3 兼容 &gt; 服务域名</a></p><p>‍</p><p>‍</p><p>‍</p><p>‍</p><p>‍</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂谈 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 思源笔记 </tag>
+            
+            <tag> 七牛云 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>两种方式反代 JSDelivr</title>
       <link href="/jsd-proxy.html"/>
       <url>/jsd-proxy.html</url>
