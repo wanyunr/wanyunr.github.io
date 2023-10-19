@@ -227,20 +227,6 @@
 
   
   <url>
-    <loc>https://www.wanyunr.com/tags/SSL/</loc>
-    <lastmod>2023-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.wanyunr.com/tags/OneinStack/</loc>
-    <lastmod>2023-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.wanyunr.com/tags/%E7%BD%91%E7%9B%98/</loc>
     <lastmod>2023-10-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -249,6 +235,20 @@
   
   <url>
     <loc>https://www.wanyunr.com/tags/%E7%9B%AE%E5%BD%95%E7%A8%8B%E5%BA%8F/</loc>
+    <lastmod>2023-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wanyunr.com/tags/SSL/</loc>
+    <lastmod>2023-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wanyunr.com/tags/OneinStack/</loc>
     <lastmod>2023-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -290,6 +290,13 @@
   </url>
   
   <url>
+    <loc>https://www.wanyunr.com/tags/Docker/</loc>
+    <lastmod>2023-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.wanyunr.com/tags/%E5%8F%8D%E4%BB%A3/</loc>
     <lastmod>2023-10-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -312,13 +319,6 @@
   
   <url>
     <loc>https://www.wanyunr.com/tags/Blog/</loc>
-    <lastmod>2023-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.wanyunr.com/tags/Docker/</loc>
     <lastmod>2023-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
