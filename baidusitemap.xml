@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.wanyunr.com/apt-install-syncthing.html</loc>
+    <lastmod>2023-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wanyunr.com/7.html</loc>
+    <lastmod>2023-10-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wanyunr.com/6.html</loc>
+    <lastmod>2023-10-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wanyunr.com/5.html</loc>
+    <lastmod>2023-10-26</lastmod>
+  </url>
+  <url>
     <loc>https://www.wanyunr.com/jsd-proxy.html</loc>
-    <lastmod>2023-07-12</lastmod>
+    <lastmod>2023-10-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wanyunr.com/dokcer-container.html</loc>
+    <lastmod>2023-10-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wanyunr.com/ssl_error.html</loc>
+    <lastmod>2023-10-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.wanyunr.com/downapp.html</loc>
+    <lastmod>2023-10-26</lastmod>
   </url>
   <url>
     <loc>https://www.wanyunr.com/porl.html</loc>
@@ -10,14 +38,6 @@
   </url>
   <url>
     <loc>https://www.wanyunr.com/peise.html</loc>
-    <lastmod>2023-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wanyunr.com/ssl_error.html</loc>
-    <lastmod>2023-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wanyunr.com/downapp.html</loc>
     <lastmod>2023-07-12</lastmod>
   </url>
   <url>
@@ -33,23 +53,11 @@
     <lastmod>2023-07-12</lastmod>
   </url>
   <url>
-    <loc>https://www.wanyunr.com/7.html</loc>
-    <lastmod>2023-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wanyunr.com/6.html</loc>
-    <lastmod>2023-07-12</lastmod>
-  </url>
-  <url>
     <loc>https://www.wanyunr.com/sh.html</loc>
     <lastmod>2023-07-12</lastmod>
   </url>
   <url>
     <loc>https://www.wanyunr.com/3.html</loc>
-    <lastmod>2023-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wanyunr.com/5.html</loc>
     <lastmod>2023-07-12</lastmod>
   </url>
   <url>
@@ -59,10 +67,6 @@
   <url>
     <loc>https://www.wanyunr.com/qiniu-siyuan.html</loc>
     <lastmod>2023-07-02</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wanyunr.com/dokcer-container.html</loc>
-    <lastmod>2023-07-01</lastmod>
   </url>
   <url>
     <loc>https://www.wanyunr.com/siyuan-s3-cos.html</loc>

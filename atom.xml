@@ -6,7 +6,7 @@
   <link href="https://www.wanyunr.com/atom.xml" rel="self"/>
   
   <link href="https://www.wanyunr.com/"/>
-  <updated>2023-07-02T07:32:14.289Z</updated>
+  <updated>2023-11-24T13:39:52.907Z</updated>
   <id>https://www.wanyunr.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Syncthing – 在 Ubuntu/Debian 上安装和设置 Syncthing</title>
+    <link href="https://www.wanyunr.com/apt-install-syncthing.html"/>
+    <id>https://www.wanyunr.com/apt-install-syncthing.html</id>
+    <published>2023-11-24T13:40:23.111Z</published>
+    <updated>2023-11-24T13:39:52.907Z</updated>
+    
+    
+    <summary type="html">本文介绍了在Ubuntu/Debian系统上安装和设置Syncthing的步骤。通过添加存储库、安装软件包、启用服务和配置防火墙，您可以在您的系统上轻松地使用Syncthing进行文件同步。</summary>
+    
+    
+    
+    <category term="技术教程" scheme="https://www.wanyunr.com/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="工具" scheme="https://www.wanyunr.com/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="Syncthing" scheme="https://www.wanyunr.com/tags/Syncthing/"/>
+    
+  </entry>
   
   <entry>
     <title>使用七牛云同步思源笔记（全指南）</title>
@@ -42,7 +63,7 @@
     <link href="https://www.wanyunr.com/jsd-proxy.html"/>
     <id>https://www.wanyunr.com/jsd-proxy.html</id>
     <published>2023-04-27T07:40:07.000Z</published>
-    <updated>2023-07-12T10:09:31.300Z</updated>
+    <updated>2023-10-26T05:19:19.543Z</updated>
     
     
     <summary type="html">本文介绍了两种方法实现 CDN 引用加速，其中一种是服务器 Nginx 反代，另一种是 PHP 服务器反代。对于 Nginx 反代，我分享了一个配置文件，并对其内部的各项功能做了解释；对于 PHP 服务器反代，我提供了一个用于将反代链接格式化的 PHP 脚本，同时分享了一个前端主页，方便用户使用。</summary>
@@ -61,7 +82,7 @@
     <link href="https://www.wanyunr.com/dokcer-container.html"/>
     <id>https://www.wanyunr.com/dokcer-container.html</id>
     <published>2023-03-23T13:37:12.000Z</published>
-    <updated>2023-07-01T15:55:08.848Z</updated>
+    <updated>2023-10-26T05:19:19.262Z</updated>
     
     
     <summary type="html">整理了一些近一年来玩过的容器。</summary>
@@ -158,7 +179,7 @@
     <link href="https://www.wanyunr.com/ssl_error.html"/>
     <id>https://www.wanyunr.com/ssl_error.html</id>
     <published>2022-12-17T04:30:00.000Z</published>
-    <updated>2023-07-12T09:31:17.140Z</updated>
+    <updated>2023-10-26T05:19:17.952Z</updated>
     
     
     <summary type="html">使用OneinStack报 nginx:[warn]&quot;ssl_stapling&quot; ignored, issuer certificate not found for certificate &quot;/usr/local/nginx/conf/ssl/example.com.crt&quot;</summary>
@@ -179,7 +200,7 @@
     <link href="https://www.wanyunr.com/downapp.html"/>
     <id>https://www.wanyunr.com/downapp.html</id>
     <published>2022-11-19T16:10:00.000Z</published>
-    <updated>2023-07-12T09:31:06.997Z</updated>
+    <updated>2023-10-26T05:19:17.265Z</updated>
     
     
     <summary type="html">目录列表程序是一个简单的提供文件下载和浏览的程序，一般用来做下载站和简易网盘。本篇文章就来整理汇总一下优秀的目录列表程序</summary>
@@ -257,7 +278,7 @@
     <link href="https://www.wanyunr.com/7.html"/>
     <id>https://www.wanyunr.com/7.html</id>
     <published>2022-09-14T05:20:00.000Z</published>
-    <updated>2023-07-12T09:28:07.181Z</updated>
+    <updated>2023-10-26T05:19:26.872Z</updated>
     
     
       
@@ -283,7 +304,7 @@
     <link href="https://www.wanyunr.com/6.html"/>
     <id>https://www.wanyunr.com/6.html</id>
     <published>2022-08-25T06:40:00.000Z</published>
-    <updated>2023-07-12T09:27:19.982Z</updated>
+    <updated>2023-10-26T05:19:22.243Z</updated>
     
     
       
@@ -309,7 +330,7 @@
     <link href="https://www.wanyunr.com/5.html"/>
     <id>https://www.wanyunr.com/5.html</id>
     <published>2022-07-24T06:40:00.000Z</published>
-    <updated>2023-07-12T09:23:29.423Z</updated>
+    <updated>2023-10-26T05:19:21.420Z</updated>
     
     
     <summary type="html">使用又拍云加速网站</summary>
