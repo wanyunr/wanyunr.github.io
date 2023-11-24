@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>Syncthing – 在 Ubuntu/Debian 上安装和设置 Syncthing</title>
+      <title>Syncthing – 在 Ubuntu/Debian 上安装 Syncthing</title>
       <link href="/apt-install-syncthing.html"/>
       <url>/apt-install-syncthing.html</url>
       
@@ -14,8 +14,6 @@
       <categories>
           
           <category> 技术教程 </category>
-          
-          <category> 工具 </category>
           
       </categories>
       

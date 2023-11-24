@@ -250,6 +250,13 @@
   </url>
   
   <url>
+    <loc>https://www.wanyunr.com/tags/SSH/</loc>
+    <lastmod>2023-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.wanyunr.com/tags/SSL/</loc>
     <lastmod>2023-11-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -264,21 +271,14 @@
   </url>
   
   <url>
-    <loc>https://www.wanyunr.com/tags/%E7%9F%AD%E7%BD%91%E5%9D%80/</loc>
-    <lastmod>2023-11-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.wanyunr.com/tags/SSH/</loc>
-    <lastmod>2023-11-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.wanyunr.com/tags/%E8%84%9A%E6%9C%AC/</loc>
+    <lastmod>2023-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wanyunr.com/tags/%E7%9F%AD%E7%BD%91%E5%9D%80/</loc>
     <lastmod>2023-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -313,6 +313,13 @@
   </url>
   
   <url>
+    <loc>https://www.wanyunr.com/tags/Syncthing/</loc>
+    <lastmod>2023-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.wanyunr.com/tags/%E6%80%9D%E6%BA%90%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-11-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -321,13 +328,6 @@
   
   <url>
     <loc>https://www.wanyunr.com/tags/%E4%B8%83%E7%89%9B%E4%BA%91/</loc>
-    <lastmod>2023-11-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.wanyunr.com/tags/Syncthing/</loc>
     <lastmod>2023-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -379,13 +379,6 @@
   
   <url>
     <loc>https://www.wanyunr.com/categories/%E5%8D%9A%E5%AE%A2%E5%8E%86%E7%A8%8B/</loc>
-    <lastmod>2023-11-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.wanyunr.com/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2023-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

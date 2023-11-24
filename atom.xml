@@ -6,7 +6,7 @@
   <link href="https://www.wanyunr.com/atom.xml" rel="self"/>
   
   <link href="https://www.wanyunr.com/"/>
-  <updated>2023-11-24T13:39:52.907Z</updated>
+  <updated>2023-11-24T17:44:47.232Z</updated>
   <id>https://www.wanyunr.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Syncthing – 在 Ubuntu/Debian 上安装和设置 Syncthing</title>
+    <title>Syncthing – 在 Ubuntu/Debian 上安装 Syncthing</title>
     <link href="https://www.wanyunr.com/apt-install-syncthing.html"/>
     <id>https://www.wanyunr.com/apt-install-syncthing.html</id>
     <published>2023-11-24T13:40:23.111Z</published>
-    <updated>2023-11-24T13:39:52.907Z</updated>
+    <updated>2023-11-24T17:44:47.232Z</updated>
     
     
     <summary type="html">本文介绍了在Ubuntu/Debian系统上安装和设置Syncthing的步骤。通过添加存储库、安装软件包、启用服务和配置防火墙，您可以在您的系统上轻松地使用Syncthing进行文件同步。</summary>
@@ -29,8 +29,6 @@
     
     
     <category term="技术教程" scheme="https://www.wanyunr.com/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/"/>
-    
-    <category term="工具" scheme="https://www.wanyunr.com/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/%E5%B7%A5%E5%85%B7/"/>
     
     
     <category term="Syncthing" scheme="https://www.wanyunr.com/tags/Syncthing/"/>
