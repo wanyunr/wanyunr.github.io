@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.wanyunr.com/porl.html</loc>
+    <lastmod>2023-12-05</lastmod>
+  </url>
+  <url>
     <loc>https://www.wanyunr.com/apt-install-syncthing.html</loc>
     <lastmod>2023-11-24</lastmod>
   </url>
@@ -31,10 +35,6 @@
   <url>
     <loc>https://www.wanyunr.com/downapp.html</loc>
     <lastmod>2023-10-26</lastmod>
-  </url>
-  <url>
-    <loc>https://www.wanyunr.com/porl.html</loc>
-    <lastmod>2023-07-12</lastmod>
   </url>
   <url>
     <loc>https://www.wanyunr.com/peise.html</loc>
