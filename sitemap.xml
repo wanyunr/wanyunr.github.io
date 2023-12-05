@@ -250,7 +250,7 @@
   </url>
   
   <url>
-    <loc>https://www.wanyunr.com/tags/SSH/</loc>
+    <loc>https://www.wanyunr.com/tags/%E7%9F%AD%E7%BD%91%E5%9D%80/</loc>
     <lastmod>2023-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -271,21 +271,7 @@
   </url>
   
   <url>
-    <loc>https://www.wanyunr.com/tags/%E8%84%9A%E6%9C%AC/</loc>
-    <lastmod>2023-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.wanyunr.com/tags/%E7%9F%AD%E7%BD%91%E5%9D%80/</loc>
-    <lastmod>2023-12-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.wanyunr.com/tags/Docker/</loc>
+    <loc>https://www.wanyunr.com/tags/SSH/</loc>
     <lastmod>2023-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -306,7 +292,21 @@
   </url>
   
   <url>
+    <loc>https://www.wanyunr.com/tags/%E8%84%9A%E6%9C%AC/</loc>
+    <lastmod>2023-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.wanyunr.com/tags/%E5%8F%8D%E4%BB%A3/</loc>
+    <lastmod>2023-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.wanyunr.com/tags/Docker/</loc>
     <lastmod>2023-12-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
