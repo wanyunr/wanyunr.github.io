@@ -6,7 +6,7 @@
   <link href="https://www.wanyunr.com/atom.xml" rel="self"/>
   
   <link href="https://www.wanyunr.com/"/>
-  <updated>2023-12-06T19:09:41.003Z</updated>
+  <updated>2023-12-06T19:12:24.690Z</updated>
   <id>https://www.wanyunr.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.wanyunr.com/apt-install-syncthing.html"/>
     <id>https://www.wanyunr.com/apt-install-syncthing.html</id>
     <published>2023-11-24T13:40:23.111Z</published>
-    <updated>2023-12-06T19:09:41.003Z</updated>
+    <updated>2023-12-06T19:12:24.690Z</updated>
     
     
     <summary type="html">本文介绍了在Ubuntu/Debian系统上安装和设置Syncthing的步骤。通过添加存储库、安装软件包、启用服务和配置防火墙，您可以在您的系统上轻松地使用Syncthing进行文件同步。</summary>
