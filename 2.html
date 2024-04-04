@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>node.js安装及环境配置教程 | 水云清</title><meta name="author" content="『 寻 』"><meta name="copyright" content="『 寻 』"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#fffde6"><meta name="description" content="Step1：下载安装包https:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F;download&#x2F; 根据自己电脑系统及位数选择，我的电脑是Windows系统、64位、想下载稳定版的.msi（LTS为长期稳定版）这里选择windows64位.msi格式安装包。 下载方式1：官网下载页进行下载  下载方式2：官网首页直接下载  Step2：安装程序①下载完成后，双击安装包，开始安装，使用默认配置安装一直点ne">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node.js安装及环境配置教程">
+<meta property="og:url" content="https://www.wanyunr.com/2.html">
+<meta property="og:site_name" content="水云清">
+<meta property="og:description" content="Step1：下载安装包https:&#x2F;&#x2F;nodejs.org&#x2F;zh-cn&#x2F;download&#x2F; 根据自己电脑系统及位数选择，我的电脑是Windows系统、64位、想下载稳定版的.msi（LTS为长期稳定版）这里选择windows64位.msi格式安装包。 下载方式1：官网下载页进行下载  下载方式2：官网首页直接下载  Step2：安装程序①下载完成后，双击安装包，开始安装，使用默认配置安装一直点ne">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.463333.xyz/blog/2024/04/660e9f5add78a.webp">
+<meta property="article:published_time" content="2022-07-10T11:25:00.000Z">
+<meta property="article:modified_time" content="2024-04-04T12:38:56.253Z">
+<meta property="article:author" content="『 寻 』">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.463333.xyz/blog/2024/04/660e9f5add78a.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.wanyunr.com/2.html"><link rel="preconnect" href="https://lib.baomitu.com"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="7FLZdWgLPslXiJye"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.4.2/css/all.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancyapps-ui/5.0.28/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?829d4dd679973ff6923e3ac9c7a7aee8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VE4CHD4FMQ"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VE4CHD4FMQ');
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":180,"position":"top","messagePrev":"距离上次更新已经","messageNext":"天了，文章内容可能已经过时了。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://lib.baomitu.com/egjs-infinitegrid/4.11.0/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'node.js安装及环境配置教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-04 20:38:56'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fffde6')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="https://lib.baomitu.com/lxgw-wenkai-screen-webfont/1.6.0/style.min.css" /><link rel="preconnect" href="https://use.sevencdn.com"><link href="https://use.sevencdn.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="水云清" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="水云清"><span class="site-name">水云清</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">node.js安装及环境配置教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-10T11:25:00.000Z" title="发表于 2022-07-10 19:25:00">2022-07-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-04T12:38:56.253Z" title="更新于 2024-04-04 20:38:56">2024-04-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/">建站笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="node.js安装及环境配置教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="Step1：下载安装包"><a href="#Step1：下载安装包" class="headerlink" title="Step1：下载安装包"></a>Step1：下载安装包</h2><p><a target="_blank" href="https://nodejs.org/zh-cn/download/" rel="external nofollow noreferrer noopener">https://nodejs.org/zh-cn/download/</a></p>
+<p>根据自己电脑系统及位数选择，我的电脑是Windows系统、64位、想下载稳定版的.msi（LTS为长期稳定版）这里选择<code>windows64位.msi</code>格式安装包。</p>
+<p>下载方式1：<a target="_blank" href="https://nodejs.org/zh-cn/download/" rel="external nofollow noreferrer noopener">官网下载页进行下载</a></p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e190a592.webp"></p>
+<p>下载方式2：<a target="_blank" href="https://nodejs.org/zh-cn/" rel="external nofollow noreferrer noopener">官网首页直接下载</a></p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e1a98453.webp"></p>
+<h2 id="Step2：安装程序"><a href="#Step2：安装程序" class="headerlink" title="Step2：安装程序"></a>Step2：安装程序</h2><p>①下载完成后，双击安装包，开始安装，使用默认配置安装一直点<code>next</code>即可，安装路径默认在<code>C:Program Files</code>下，也可以自定义修改</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e1c1654c.webp"></p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e1dba625.webp"></p>
+<p>②安装路径默认在C:Program Files下面，也能够自定义修改，而后点击next（我这里设置我的安装目录为<code>E:KF ode.js</code> 根据自己的需要进行更改。）</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e1ec7747.webp"></p>
+<p>③下图根据本身的需要进行，我选择了默认<code>Node.js runtime</code>，而后<code>Next</code></p>
+<ul>
+<li><code>Node.js runtime</code> ：表示运行环境</li>
+<li><code>npm package manager</code>：表示npm包管理器</li>
+<li><code>online documentation shortcuts</code> ：在线文档快捷方式</li>
+<li><code>Add to PATH</code>：添加到环境变量</li>
+</ul>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e205658e.webp"></p>
+<p>④以下图框中所示，我没有选中，而是直接next</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e226d563.webp"></p>
+<p>⑤点击Install，进行安装</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e23da9a0.webp"></p>
+<p>⑥点击finish，完成安装</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e252cc14.webp"></p>
+<p>⑦安装完成后，.msi格式的安装包已经将<a target="_blank" href="https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020" rel="external nofollow noreferrer noopener">node</a>启动程序添加到系统环境变量path中,咱们能够查看系统变量进行验证：在【个人电脑】右键→【属性】→【高级系统设置】</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e26b977f.webp"></p>
+<p>⑧点击【高级】→【环境变量】</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e2870780.webp"></p>
+<p>⑨在系统变量中查看【path】，点击【编辑】</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e2a36e1e.webp"></p>
+<p>⑩会发现.msi格式的安装包已经将node启动程序添加到系统环境变量path中</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e2c19aa6.webp"></p>
+<h2 id="Step3：查看"><a href="#Step3：查看" class="headerlink" title="Step3：查看"></a>Step3：查看</h2><p>① 既然已经将node程序添加到全局系统变量中，把咱们能够直接在CMD窗口中任意位置执行node，打开CMD窗口，执行命令<code>node -v</code>查看node版本</p>
+<p>【注意：此时是打开CMD窗口，并非在C:Program Files odejs目录下执行node.exe】</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e2d8114a.webp"></p>
+<p>② 最新版的node在安装时同时也安装了npm,执行<code>npm -v</code>查看npm版本</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e2eb16a1.webp"></p>
+<p>③ 默认状况下，咱们在执行npm install -g XXXX时，下载了一个全局包，这个包的默认存放路径C:UsersAdministratorAppDataRoaming pm ode_modules下，能够经过CMD指令<code>npm root -g</code>查看</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e3036945.webp"></p>
+<p>⑤ 一部分经常使用的命令，以下：</p>
+<blockquote>
+<ul>
+<li>npm -v：查看npm安装的版本。</li>
+<li>npm init：会引导你建立一个package.json文件，包括名称、版本、作者等信息。</li>
+<li>npm list：查看当前目录下已安装的node包。</li>
+<li>npm ls：查看当前目录下已安装的node包。</li>
+<li>npm install moduleNames：安装Node模块到本地目录node_modules下。</li>
+<li>npm install &lt; name &gt; -g：将包安装到全局环境中。</li>
+<li>npm install &lt; name &gt; –save：安装的同时，将信息写入package.json中，项目路径中若是有package.json文件时，直接使用npm install方法就能够根据dependencies配置安装全部的依赖包，这样代码提交到git时，就不用提交node_modules这个文件夹了。</li>
+<li>npm install &lt; name&gt; –save-dev：安装的同时，将信息写入package.json中项目路径中若是有package.json文件时，直接使用npm install方法就能够根据devDependencies配置安装全部的依赖包，这样代码提交到git时，就不用提交node_modules这个文件夹了。</li>
+<li>npm uninstall moudleName：卸载node模块。</li>
+</ul>
+</blockquote>
+<h2 id="Step4：环境配置"><a href="#Step4：环境配置" class="headerlink" title="Step4：环境配置"></a>Step4：环境配置</h2><p>① 打开安装的目录（默认安装情况下在C:Program Files odejs）</p>
+<p>② 在安装目录下新建两个文件夹【node_global】和【node_cache】</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e32951ff.webp"></p>
+<p>③ 再次打开cmd命令窗口，输入npm config set prefix “你的路径 ode_global”（<code>“你的路径”默认安装的状况下为 C:Program Files odejs</code>）</p>
+<pre><code>npm config set prefix &quot;E:KF
+odejs
+ode_global&quot;
+</code></pre>
+<p>④ npm config set cache “你的路径 ode_cache” 可直接复制刚刚新建的空文件夹目录</p>
+<pre><code>npm config set cache &quot;E:KF
+odejs
+ode_cache&quot;
+</code></pre>
+<p>执行的时候建议使用管理员权限打开CMD，否则有可能会提示权限不够报错</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e342b11e.webp"></p>
+<p>⑤设置环境变量，打开【系统属性】-【高级】-【环境变量】，在<code>系统变量</code>中新建</p>
+<p>变量名：<code>NODE_PATH</code></p>
+<p>变量值：<code>C:Program Files odejs ode_global ode_modules</code></p>
+<p>（ 用来告诉系统， 下载的模块或者包都在这里了）</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e357c35f.webp"></p>
+<p>⑥ 编辑<code>用户变量（环境变量）</code>的 path，将默认的 C 盘下 <code>APPDataRoaming pm</code> 修改成 <code>C:Program Files odejs ode_global</code>，点击确定</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e3705629.webp"></p>
+<p>最后别忘了在<code>Path</code>里面添加<code>NODE_PATH</code></p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e38ee767.webp"></p>
+<p>⑦ 测试，配置完成后，安装个module测试下，咱们就安装最经常使用的express模块，打开cmd窗口，输入以下命令进行模块的全局安装：</p>
+<pre><code>npm install express -g   // -g是全局安装的意思x
+</code></pre>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9e3a98a61.webp"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.wanyunr.com">『 寻 』</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.wanyunr.com/2.html">https://www.wanyunr.com/2.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.wanyunr.com" target="_blank">水云清</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Windows/">Windows</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/3.html" title="Window中使用Hexo与Github搭建个人博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-14</div><div class="title">Window中使用Hexo与Github搭建个人博客</div></div></a></div><div><a href="/4.html" title="Window 10 解决文件夹属性没有安全等选项"><img class="cover" src="https://blog.463333.xyz/blog/2024/04/660e9f7e155fb.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-14</div><div class="title">Window 10 解决文件夹属性没有安全等选项</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">『 寻 』</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wanyunr#outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.wanyunr.com/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Step1%EF%BC%9A%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">Step1：下载安装包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step2%EF%BC%9A%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">Step2：安装程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step3%EF%BC%9A%E6%9F%A5%E7%9C%8B"><span class="toc-number">3.</span> <span class="toc-text">Step3：查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step4%EF%BC%9A%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">Step4：环境配置</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/apt-install-syncthing.html" title="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing"><img src="https://blog.463333.xyz/blog/2024/04/660ea060b30b8.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing"/></a><div class="content"><a class="title" href="/apt-install-syncthing.html" title="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing">Syncthing – 在 Ubuntu/Debian 上安装 Syncthing</a><time datetime="2023-11-24T13:40:23.111Z" title="发表于 2023-11-24 21:40:23">2023-11-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/qiniu-siyuan.html" title="使用七牛云同步思源笔记（全指南）">使用七牛云同步思源笔记（全指南）</a><time datetime="2023-07-02T07:24:07.000Z" title="发表于 2023-07-02 15:24:07">2023-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/jsd-proxy.html" title="两种方式反代 JSDelivr"><img src="https://blog.463333.xyz/blog/2024/04/660ea02bb117d.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="两种方式反代 JSDelivr"/></a><div class="content"><a class="title" href="/jsd-proxy.html" title="两种方式反代 JSDelivr">两种方式反代 JSDelivr</a><time datetime="2023-04-27T07:40:07.000Z" title="发表于 2023-04-27 15:40:07">2023-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By 『 寻 』</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://hexo.io/"><img src="/img/hexo.svg" alt=""></a>&nbsp;<a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><img src="/img/butterfly.svg" alt=""></a>&nbsp;<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="/img/ypy.svg" alt=""></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://lib.baomitu.com/fancyapps-ui/5.0.28/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

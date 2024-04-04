@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>VPS常用脚本 | 水云清</title><meta name="author" content="『 寻 』"><meta name="copyright" content="『 寻 』"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#fffde6"><meta name="description" content="总结平时用的比较多的一些脚本和插件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPS常用脚本">
+<meta property="og:url" content="https://www.wanyunr.com/sh.html">
+<meta property="og:site_name" content="水云清">
+<meta property="og:description" content="总结平时用的比较多的一些脚本和插件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.wanyunr.com/img/touxiang.png">
+<meta property="article:published_time" content="2022-11-16T16:45:02.000Z">
+<meta property="article:modified_time" content="2024-04-04T12:39:33.162Z">
+<meta property="article:author" content="『 寻 』">
+<meta property="article:tag" content="脚本">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.wanyunr.com/img/touxiang.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.wanyunr.com/sh.html"><link rel="preconnect" href="https://lib.baomitu.com"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="7FLZdWgLPslXiJye"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.4.2/css/all.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancyapps-ui/5.0.28/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?829d4dd679973ff6923e3ac9c7a7aee8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VE4CHD4FMQ"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VE4CHD4FMQ');
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":180,"position":"top","messagePrev":"距离上次更新已经","messageNext":"天了，文章内容可能已经过时了。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://lib.baomitu.com/egjs-infinitegrid/4.11.0/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'VPS常用脚本',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-04 20:39:33'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fffde6')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="https://lib.baomitu.com/lxgw-wenkai-screen-webfont/1.6.0/style.min.css" /><link rel="preconnect" href="https://use.sevencdn.com"><link href="https://use.sevencdn.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="水云清" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="水云清"><span class="site-name">水云清</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">VPS常用脚本</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-16T16:45:02.000Z" title="发表于 2022-11-17 00:45:02">2022-11-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-04T12:39:33.162Z" title="更新于 2024-04-04 20:39:33">2024-04-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/">建站笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="VPS常用脚本"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><ol>
+<li>更新：20230215</li>
+</ol>
+<p>更多请移步 <a target="_blank" href="https://docs.wanyunr.com/" rel="external nofollow noreferrer noopener">晚云文档</a></p>
+<h1 id="⚒-常用脚本"><a href="#⚒-常用脚本" class="headerlink" title="⚒ 常用脚本"></a>⚒ 常用脚本</h1><h2 id="面板"><a href="#面板" class="headerlink" title="面板"></a>面板</h2><h4 id="哪吒探针：一款便携服务器状态监控面板"><a href="#哪吒探针：一款便携服务器状态监控面板" class="headerlink" title="哪吒探针：一款便携服务器状态监控面板"></a>哪吒探针：一款便携服务器状态监控面板</h4><p>海外安装下载地址：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh  -o nezha.sh &amp;&amp; chmod +x nezha.sh &amp;&amp; sudo ./nezha.sh</span><br></pre></td></tr></table></figure>
+
+<p>国内安装下载地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://jihulab.com/nezha/nezha/-/raw/master/script/install.sh -o nezha.sh &amp;&amp; chmod +x nezha.sh &amp;&amp; sudo CN=true ./nezha.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="mdserver-web"><a href="#mdserver-web" class="headerlink" title="mdserver-web"></a><a target="_blank" href="https://github.com/midoks/mdserver-web" rel="external nofollow noreferrer noopener">mdserver-web</a></h4><ul>
+<li>初始安装</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://cdn.jsdelivr.net/gh/midoks/mdserver-web@latest/scripts/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>更新</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://cdn.jsdelivr.net/gh/midoks/mdserver-web@latest/scripts/update.sh | bash</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>卸载脚本</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://cdn.jsdelivr.net/gh/midoks/mdserver-web@latest/scripts/uninstall.sh | bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="主机工具"><a href="#主机工具" class="headerlink" title="主机工具"></a>主机工具</h2><h3 id="工具箱"><a href="#工具箱" class="headerlink" title="工具箱"></a>工具箱</h3><ol>
+<li>BlueSkyXN 综合工具箱</li>
+</ol>
+<p><a target="_blank" href="https://github.com/BlueSkyXN/SKY-BOX" rel="external nofollow noreferrer noopener">https://github.com/BlueSkyXN/SKY-BOX</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O box.sh https://raw.githubusercontent.com/BlueSkyXN/SKY-BOX/main/box.sh &amp;&amp; chmod +x box.sh &amp;&amp; clear &amp;&amp; ./box.sh</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><pre><code>Misaka Linux Toolbox
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/MisakaLinuxToolbox/master/MisakaToolbox.sh &amp;&amp; bash MisakaToolbox.sh
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 挂载硬盘</span><br><span class="line"></span><br><span class="line">1. 脚本（来自宝塔）</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">wget -O auto_disk.sh http://download.bt.cn/tools/auto_disk.sh &amp;&amp; bash auto_disk.sh  #默认挂载到 /www</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>脚本（来自oneinstack）</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://mirrors.linuxeye.com/scripts/auto_fdisk.sh</span><br><span class="line">chmod +x ./auto_fdisk.sh</span><br><span class="line">./auto_fdisk.sh</span><br></pre></td></tr></table></figure>
+
+<p>如果操作过程中遭遇异常退出，再次运行时，可能会提示：The script is already exist, please next time to run this script，这个时候，需要执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f /tmp/.auto_fdisk.sh</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>脚本</li>
+</ol>
+<p><a target="_blank" href="https://blog.csdn.net/HYXRX/article/details/114366675" rel="external nofollow noreferrer noopener">blog.csdn.net</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/bash/sh</span><br><span class="line">echo &quot;请输入所挂盘目标地址!(示例:/dev/xxx)&quot;</span><br><span class="line">read -p &quot;地址:&quot; o</span><br><span class="line">echo &quot;请输入所要挂载的地址!(示例:/xxx)&quot;</span><br><span class="line">read -p &quot;地址:&quot; p</span><br><span class="line">sleep 3s</span><br><span class="line">cd $p &gt;&gt;/dev/null 2&gt;&amp;1</span><br><span class="line">if [ $? -eq 0 ];then</span><br><span class="line">       echo &quot;挂载地址存在!&quot;</span><br><span class="line">else</span><br><span class="line">       echo &quot;挂载地址已创建!&quot; | sudo mkdir $p</span><br><span class="line">fi</span><br><span class="line">sleep 2s</span><br><span class="line">sudo mkfs.ext4 -F $o &gt;&gt; /dev/null 2&gt;&amp;1</span><br><span class="line">sleep 3s</span><br><span class="line">echo &quot; $o $p ext4 defaults 0 0 &quot; | sudo tee -a /etc/fstab &amp;&amp; echo &quot; $p &quot; |sudo tee 1.txt</span><br><span class="line">sleep 3s</span><br><span class="line">sudo mount -a</span><br><span class="line">b=`sed &#x27;s#/# #g&#x27; 1.txt`</span><br><span class="line">a=`df -h|grep /dev/sdb|awk &#x27;&#123;print $6&#125;&#x27;|sed &#x27;s#/# #g&#x27;`</span><br><span class="line">if [ $a = $b ];then</span><br><span class="line">        echo &quot; $p 挂载成功! &quot;</span><br><span class="line">else</span><br><span class="line">        echo &quot; $p 挂载失败! &quot;</span><br><span class="line">fi</span><br><span class="line">sleep 2s</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="开启BBR"><a href="#开启BBR" class="headerlink" title="开启BBR"></a>开启BBR</h3><ol>
+<li></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://down.907777.xyz/Script/vps/install_kernel.sh &amp;&amp; chmod +x ./install_kernel.sh &amp;&amp; ./install_kernel.sh</span><br><span class="line"></span><br><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/jinwyp/one_click_script/master/install_kernel.sh &amp;&amp; chmod +x ./install_kernel.sh &amp;&amp; ./install_kernel.sh</span><br><span class="line"></span><br><span class="line">bash &lt;(curl -Lso- https://git.io/kernel.sh)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>（推荐）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate &quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot; &amp;&amp; chmod +x tcp.sh &amp;&amp; ./tcp.sh</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O tcpx.sh &quot;https://github.com/ylx2016/Linux-NetSpeed/raw/master/tcpx.sh&quot; &amp;&amp; chmod +x tcpx.sh &amp;&amp; ./tcpx.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="流媒体测试"><a href="#流媒体测试" class="headerlink" title="流媒体测试"></a>流媒体测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -L -s https://git.io/JRw8R)</span><br></pre></td></tr></table></figure>
+
+<h3 id="VPS-测试"><a href="#VPS-测试" class="headerlink" title="VPS 测试"></a>VPS 测试</h3><ol>
+<li>yabs</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- yabs.sh | bash</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>bench.sh</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- bench.sh | bash</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="重装系统"><a href="#重装系统" class="headerlink" title="重装系统"></a>重装系统</h3><ol>
+<li>萌咖大佬</li>
+</ol>
+<p>甲骨文、三毛、Vir、RN 等大部分 VPS 通用，三毛、甲骨文 记得去掉 -firmware</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 11 -v 64 -p Abc123 -port 22 -a</span><br><span class="line"></span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -u 20.04 -p Abc123. -port 29960 -a</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" href="https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh" rel="external nofollow noreferrer noopener">参数说明</a> - 42行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 11 -v 64 -p 密码 -port 端口 -a -firmware</span><br></pre></td></tr></table></figure>
+
+<p>Q：如果出现无法安装Docker报错E: Malformed entry 1 in list file &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;docker.list (Component)，执行rm &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;docker.list即可。</p>
+<ol start="2">
+<li><a target="_blank" href="https://git.beta.gs/" rel="external nofollow noreferrer noopener"><strong>beta.gs</strong></a></li>
+</ol>
+<p>一键 DD 脚本，支持性好，更智能更全面，支持国内外各种 VPS 重装，特别是对国内各种访问国外资源慢的 VPS 安装有奇效。</p>
+<p>安装重装系统的前提组件:</p>
+<p>Debian&#x2F;Ubuntu:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y xz-utils openssl gawk file wget screen &amp;&amp; screen -S os</span><br></pre></td></tr></table></figure>
+
+<p>RedHat&#x2F;CentOS:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y xz openssl gawk file glibc-common wget screen &amp;&amp; screen -S os</span><br></pre></td></tr></table></figure>
+
+<p>使用:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O NewReinstall.sh https://git.io/newbetags &amp;&amp; chmod a+x NewReinstall.sh &amp;&amp; bash NewReinstall.sh</span><br></pre></td></tr></table></figure>
+
+<p>如为 CN 主机 (部分主机商已不能使用)，可能出现报错或不能下载脚本的问题，可执行以下命令开始安装.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O NewReinstall.sh https://cdn.jsdelivr.net/gh/fcurrk/reinstall@master/NewReinstall.sh &amp;&amp; chmod a+x NewReinstall.sh &amp;&amp; bash NewReinstall.sh</span><br></pre></td></tr></table></figure>
+
+<p>点击使用<a target="_blank" href="https://git.beta.gs/index.php/8.html" rel="external nofollow noreferrer noopener">旧版脚本</a></p>
+<ol start="3">
+<li>leitbogioro</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -qO InstallNET.sh &#x27;https://raw.githubusercontent.com/leitbogioro/Tools/master/Linux_reinstall/InstallNET.sh&#x27; &amp;&amp; chmod a+x InstallNET.sh | bash </span><br></pre></td></tr></table></figure>
+
+<p>参数详情：<br>-debian 9&#x2F;10&#x2F;11 : Debian 9+<br>-centos 7&#x2F;8&#x2F;9-stream: CentOS 7+<br>-almalinux&#x2F;alma 8&#x2F;9: AlmaLinux 8+<br>-rockylinux&#x2F;rocky 8&#x2F;9: RockyLinux 8+<br>-fedora 34&#x2F;35&#x2F;36&#x2F;37: Fedora 34+<br>-ubuntu 16.04&#x2F;18.04&#x2F;20.04: Ubuntu 16.0420.04 -mirror “有效的源链接” -port “165535”<br>-pwd ‘自定义密码，不可太复杂，不推荐带特殊符号，默认：LeitboGi0ro’<br>--network “dhcp&#x2F;auto or static&#x2F;manual” 动态或静态网络，可选，可不添加，脚本自动识别<br>带两个横杠的参数应该放在脚本运行最后面</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="Aria2"><a href="#Aria2" class="headerlink" title="Aria2"></a>Aria2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N git.io/aria2.sh &amp;&amp; chmod +x aria2.sh &amp;&amp; ./aria2.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="CCAA"><a href="#CCAA" class="headerlink" title="CCAA"></a>CCAA</h3><blockquote>
+<p><a target="_blank" href="https://github.com/helloxz/ccaa" rel="external nofollow noreferrer noopener">一键安装Aria2 + AriaNg + FileBrowse</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Lsk https://raw.githubusercontent.com/helloxz/ccaa/master/ccaa.sh)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Node-js一键安装"><a href="#Node-js一键安装" class="headerlink" title="Node.js一键安装"></a>Node.js一键安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
+
+<p>安装不同版本的Node.js，替换setup_14.x为想要的setup_16.x即可</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.wanyunr.com">『 寻 』</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.wanyunr.com/sh.html">https://www.wanyunr.com/sh.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.wanyunr.com" target="_blank">水云清</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%84%9A%E6%9C%AC/">脚本</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/shell.html" title="脚本存档 （不定期更新）"><img class="cover" src="https://blog.463333.xyz/blog/2024/04/660ea004e025d.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-06</div><div class="title">脚本存档 （不定期更新）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">『 寻 』</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wanyunr#outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.wanyunr.com/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%9A%92-%E5%B8%B8%E7%94%A8%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">⚒ 常用脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E6%9D%BF"><span class="toc-number">1.1.</span> <span class="toc-text">面板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%93%AA%E5%90%92%E6%8E%A2%E9%92%88%EF%BC%9A%E4%B8%80%E6%AC%BE%E4%BE%BF%E6%90%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%8A%B6%E6%80%81%E7%9B%91%E6%8E%A7%E9%9D%A2%E6%9D%BF"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">哪吒探针：一款便携服务器状态监控面板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mdserver-web"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">mdserver-web</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%B7%A5%E5%85%B7"><span class="toc-number">1.2.</span> <span class="toc-text">主机工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E7%AE%B1"><span class="toc-number">1.2.1.</span> <span class="toc-text">工具箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AFBBR"><span class="toc-number">1.2.2.</span> <span class="toc-text">开启BBR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E5%AA%92%E4%BD%93%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">流媒体测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VPS-%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.4.</span> <span class="toc-text">VPS 测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.5.</span> <span class="toc-text">重装系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.3.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Aria2"><span class="toc-number">1.3.1.</span> <span class="toc-text">Aria2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CCAA"><span class="toc-number">1.3.2.</span> <span class="toc-text">CCAA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.3.</span> <span class="toc-text">Node.js一键安装</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/apt-install-syncthing.html" title="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing"><img src="https://blog.463333.xyz/blog/2024/04/660ea060b30b8.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing"/></a><div class="content"><a class="title" href="/apt-install-syncthing.html" title="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing">Syncthing – 在 Ubuntu/Debian 上安装 Syncthing</a><time datetime="2023-11-24T13:40:23.111Z" title="发表于 2023-11-24 21:40:23">2023-11-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/qiniu-siyuan.html" title="使用七牛云同步思源笔记（全指南）">使用七牛云同步思源笔记（全指南）</a><time datetime="2023-07-02T07:24:07.000Z" title="发表于 2023-07-02 15:24:07">2023-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/jsd-proxy.html" title="两种方式反代 JSDelivr"><img src="https://blog.463333.xyz/blog/2024/04/660ea02bb117d.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="两种方式反代 JSDelivr"/></a><div class="content"><a class="title" href="/jsd-proxy.html" title="两种方式反代 JSDelivr">两种方式反代 JSDelivr</a><time datetime="2023-04-27T07:40:07.000Z" title="发表于 2023-04-27 15:40:07">2023-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By 『 寻 』</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://hexo.io/"><img src="/img/hexo.svg" alt=""></a>&nbsp;<a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><img src="/img/butterfly.svg" alt=""></a>&nbsp;<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="/img/ypy.svg" alt=""></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://lib.baomitu.com/fancyapps-ui/5.0.28/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

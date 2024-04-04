@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>使用腾讯云 COS 同步思源笔记（S3 模式） | 水云清</title><meta name="author" content="『 寻 』"><meta name="copyright" content="『 寻 』"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#fffde6"><meta name="description" content="本文介绍了如何使用腾讯云COS来同步思源笔记。需要准备腾讯云账号、一个私有读写的储存桶以及子用户的Key。具体步骤包括注册腾讯云账号、完成实名认证、准备子用户和访问密钥、开通COS服务以及填写思源笔记S3同步的表格。同时提供了参考链接。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用腾讯云 COS 同步思源笔记（S3 模式）">
+<meta property="og:url" content="https://www.wanyunr.com/siyuan-s3-cos.html">
+<meta property="og:site_name" content="水云清">
+<meta property="og:description" content="本文介绍了如何使用腾讯云COS来同步思源笔记。需要准备腾讯云账号、一个私有读写的储存桶以及子用户的Key。具体步骤包括注册腾讯云账号、完成实名认证、准备子用户和访问密钥、开通COS服务以及填写思源笔记S3同步的表格。同时提供了参考链接。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.463333.xyz/blog/2024/04/660ea011b5812.webp">
+<meta property="article:published_time" content="2023-02-20T19:09:05.000Z">
+<meta property="article:modified_time" content="2023-02-20T19:09:05.000Z">
+<meta property="article:author" content="『 寻 』">
+<meta property="article:tag" content="腾讯云">
+<meta property="article:tag" content="S3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.463333.xyz/blog/2024/04/660ea011b5812.webp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.wanyunr.com/siyuan-s3-cos.html"><link rel="preconnect" href="https://lib.baomitu.com"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="7FLZdWgLPslXiJye"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.4.2/css/all.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancyapps-ui/5.0.28/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?829d4dd679973ff6923e3ac9c7a7aee8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VE4CHD4FMQ"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VE4CHD4FMQ');
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":180,"position":"top","messagePrev":"距离上次更新已经","messageNext":"天了，文章内容可能已经过时了。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://lib.baomitu.com/egjs-infinitegrid/4.11.0/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '使用腾讯云 COS 同步思源笔记（S3 模式）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-21 03:09:05'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fffde6')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="https://lib.baomitu.com/lxgw-wenkai-screen-webfont/1.6.0/style.min.css" /><link rel="preconnect" href="https://use.sevencdn.com"><link href="https://use.sevencdn.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="水云清" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="水云清"><span class="site-name">水云清</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">使用腾讯云 COS 同步思源笔记（S3 模式）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-20T19:09:05.000Z" title="发表于 2023-02-21 03:09:05">2023-02-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-20T19:09:05.000Z" title="更新于 2023-02-21 03:09:05">2023-02-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="使用腾讯云 COS 同步思源笔记（S3 模式）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>前段时间思源开源了云同步功能，使其可以使用自己的对象储存来同步笔记，而我平时使用官方云同步时使用的空间和流量也不多，便想着使用腾讯云COS来同步笔记。（下图是我8个月使用的流量统计）</p>
+<p><img src="https://blog.463333.xyz/blog/2024/04/660e9f243c704.webp" alt="8个月使用的流量统计"></p>
+<h4 id="准备："><a href="#准备：" class="headerlink" title="准备："></a>准备：</h4><ul>
+<li>腾讯云账号</li>
+<li>一个私有读写的<strong>COS储存桶</strong>（请记录该储存桶的访问域名，例如<code>https://siyuan-xxxxxx.cos.ap-guangzhou.myqcloud.com</code>​）</li>
+<li>一对子用户的Key（有COS读写权限）。</li>
+</ul>
+<p>若不满足以上条件，请查看<a href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E6%B3%A8%E5%86%8C%E8%85%BE%E8%AE%AF%E4%BA%91%E8%B4%A6%E5%8F%B7">注册腾讯云账号</a><br>若一切准备就绪，按下图填写表格即可。</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>这里填<code>https://cos.ap-guangzhou.myqcloud.com</code>​</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Access Key</td>
+<td>这里填写子用户的 <strong>SecretId</strong>。</td>
+</tr>
+<tr>
+<td>Secret Key</td>
+<td>这里填写子用户的 <strong>SecretKey</strong>。</td>
+</tr>
+<tr>
+<td>Bucket</td>
+<td><code>siyuan-xxxxxx</code>​</td>
+</tr>
+<tr>
+<td>Region</td>
+<td><code>ap-guangzhou</code>​</td>
+</tr>
+</tbody></table>
+<p>表中的 Endpoint、Bucket、Region都包含在该<strong>储存桶的访问域名</strong>中。</p>
+<h4 id="步骤1：注册腾讯云账号"><a href="#步骤1：注册腾讯云账号" class="headerlink" title="步骤1：注册腾讯云账号"></a>步骤1：注册腾讯云账号</h4><p>（如果已在腾讯云注册，可忽略此步骤。）</p>
+<p><a target="_blank" href="https://cloud.tencent.com/register?s_url=https://cloud.tencent.com/" rel="external nofollow noreferrer noopener">点此注册腾讯云账号</a></p>
+<h4 id="步骤2：完成实名认证"><a href="#步骤2：完成实名认证" class="headerlink" title="步骤2：完成实名认证"></a>步骤2：完成实名认证</h4><p>（如果已完成，可忽略此步骤。）</p>
+<p><a target="_blank" href="https://console.cloud.tencent.com/developer" rel="external nofollow noreferrer noopener">点此完成实名认证</a></p>
+<p>详细认证流程，请参见 <a target="_blank" href="https://cloud.tencent.com/document/product/378/3629" rel="external nofollow noreferrer noopener">实名认证介绍</a>。</p>
+<h4 id="步骤3：准备子用户和访问密钥"><a href="#步骤3：准备子用户和访问密钥" class="headerlink" title="步骤3：准备子用户和访问密钥"></a>步骤3：准备子用户和访问密钥</h4><ol>
+<li>在访问管理控制台的 <a target="_blank" href="https://console.cloud.tencent.com/cam/user/userType" rel="external nofollow noreferrer noopener">新建用户</a> 页面中使用自定义创建新建一个用户</li>
+<li>允许访问方式为<code>腾讯云控制台访问</code></li>
+<li>下一步设置用户权限，搜索<code>COS</code>，给予所有相关访问权限</li>
+<li>在用户列表中找到刚才创建的用户，在用户详情中新建密钥，并记录<strong>SecretId</strong> 和 <strong>SecretKey</strong>。</li>
+</ol>
+<h4 id="步骤4：开通-COS-服务"><a href="#步骤4：开通-COS-服务" class="headerlink" title="步骤4：开通 COS 服务"></a>步骤4：开通 COS 服务</h4><p><a target="_blank" href="https://console.cloud.tencent.com/cos5" rel="external nofollow noreferrer noopener">点此开通 COS 服务</a>，创建一个<em>私有读写</em> 的储存桶，然后在储存桶概览中复制并记录<code>访问域名</code>。最后在储存桶<code>权限管理-储存桶访问权限</code>中添加刚才创建的子用户，权限为数据读取和写入。</p>
+<p>最后，使用记录的信息<a href="#%E5%87%86%E5%A4%87">填写思源笔记S3同步的表格</a></p>
+<blockquote>
+<p>参考 <a target="_blank" href="https://cloud.tencent.com/document/product/436/41284" rel="external nofollow noreferrer noopener">腾讯云 | 在兼容 S3 的第三方应用中使用 COS 的通用配置 </a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.wanyunr.com">『 寻 』</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.wanyunr.com/siyuan-s3-cos.html">https://www.wanyunr.com/siyuan-s3-cos.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.wanyunr.com" target="_blank">水云清</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/">腾讯云</a><a class="post-meta__tags" href="/tags/S3/">S3</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">『 寻 』</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wanyunr#outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.wanyunr.com/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">准备：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E6%B3%A8%E5%86%8C%E8%85%BE%E8%AE%AF%E4%BA%91%E8%B4%A6%E5%8F%B7"><span class="toc-number">2.</span> <span class="toc-text">步骤1：注册腾讯云账号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E5%AE%8C%E6%88%90%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">步骤2：完成实名认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A43%EF%BC%9A%E5%87%86%E5%A4%87%E5%AD%90%E7%94%A8%E6%88%B7%E5%92%8C%E8%AE%BF%E9%97%AE%E5%AF%86%E9%92%A5"><span class="toc-number">4.</span> <span class="toc-text">步骤3：准备子用户和访问密钥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A44%EF%BC%9A%E5%BC%80%E9%80%9A-COS-%E6%9C%8D%E5%8A%A1"><span class="toc-number">5.</span> <span class="toc-text">步骤4：开通 COS 服务</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/apt-install-syncthing.html" title="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing"><img src="https://blog.463333.xyz/blog/2024/04/660ea060b30b8.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing"/></a><div class="content"><a class="title" href="/apt-install-syncthing.html" title="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing">Syncthing – 在 Ubuntu/Debian 上安装 Syncthing</a><time datetime="2023-11-24T13:40:23.111Z" title="发表于 2023-11-24 21:40:23">2023-11-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/qiniu-siyuan.html" title="使用七牛云同步思源笔记（全指南）">使用七牛云同步思源笔记（全指南）</a><time datetime="2023-07-02T07:24:07.000Z" title="发表于 2023-07-02 15:24:07">2023-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/jsd-proxy.html" title="两种方式反代 JSDelivr"><img src="https://blog.463333.xyz/blog/2024/04/660ea02bb117d.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="两种方式反代 JSDelivr"/></a><div class="content"><a class="title" href="/jsd-proxy.html" title="两种方式反代 JSDelivr">两种方式反代 JSDelivr</a><time datetime="2023-04-27T07:40:07.000Z" title="发表于 2023-04-27 15:40:07">2023-04-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By 『 寻 』</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://hexo.io/"><img src="/img/hexo.svg" alt=""></a>&nbsp;<a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><img src="/img/butterfly.svg" alt=""></a>&nbsp;<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="/img/ypy.svg" alt=""></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://lib.baomitu.com/fancyapps-ui/5.0.28/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

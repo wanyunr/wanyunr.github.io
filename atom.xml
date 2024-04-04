@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>水云清</title>
+  <icon>https://www.wanyunr.com/icon.png</icon>
+  
+  <link href="https://www.wanyunr.com/atom.xml" rel="self"/>
+  
+  <link href="https://www.wanyunr.com/"/>
+  <updated>2024-04-04T12:43:27.597Z</updated>
+  <id>https://www.wanyunr.com/</id>
+  
+  <author>
+    <name>『 寻 』</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Syncthing – 在 Ubuntu/Debian 上安装 Syncthing</title>
+    <link href="https://www.wanyunr.com/apt-install-syncthing.html"/>
+    <id>https://www.wanyunr.com/apt-install-syncthing.html</id>
+    <published>2023-11-24T13:40:23.111Z</published>
+    <updated>2024-04-04T12:43:27.597Z</updated>
+    
+    
+    <summary type="html">本文介绍了在Ubuntu/Debian系统上安装和设置Syncthing的步骤。通过添加存储库、安装软件包、启用服务和配置防火墙，您可以在您的系统上轻松地使用Syncthing进行文件同步。</summary>
+    
+    
+    
+    <category term="技术教程" scheme="https://www.wanyunr.com/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Syncthing" scheme="https://www.wanyunr.com/tags/Syncthing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用七牛云同步思源笔记（全指南）</title>
+    <link href="https://www.wanyunr.com/qiniu-siyuan.html"/>
+    <id>https://www.wanyunr.com/qiniu-siyuan.html</id>
+    <published>2023-07-02T07:24:07.000Z</published>
+    <updated>2023-07-02T07:32:14.289Z</updated>
+    
+    
+    <summary type="html">七牛云有一定的免费额度，完全够用来同步笔记</summary>
+    
+    
+    
+    <category term="杂谈" scheme="https://www.wanyunr.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="思源笔记" scheme="https://www.wanyunr.com/tags/%E6%80%9D%E6%BA%90%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="七牛云" scheme="https://www.wanyunr.com/tags/%E4%B8%83%E7%89%9B%E4%BA%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>两种方式反代 JSDelivr</title>
+    <link href="https://www.wanyunr.com/jsd-proxy.html"/>
+    <id>https://www.wanyunr.com/jsd-proxy.html</id>
+    <published>2023-04-27T07:40:07.000Z</published>
+    <updated>2024-04-04T12:42:20.154Z</updated>
+    
+    
+    <summary type="html">本文介绍了两种方法实现 CDN 引用加速，其中一种是服务器 Nginx 反代，另一种是 PHP 服务器反代。对于 Nginx 反代，我分享了一个配置文件，并对其内部的各项功能做了解释；对于 PHP 服务器反代，我提供了一个用于将反代链接格式化的 PHP 脚本，同时分享了一个前端主页，方便用户使用。</summary>
+    
+    
+    
+    <category term="小知识" scheme="https://www.wanyunr.com/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="反向代理" scheme="https://www.wanyunr.com/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用 Docker 容器</title>
+    <link href="https://www.wanyunr.com/dokcer-container.html"/>
+    <id>https://www.wanyunr.com/dokcer-container.html</id>
+    <published>2023-03-23T13:37:12.000Z</published>
+    <updated>2024-04-04T12:42:07.716Z</updated>
+    
+    
+    <summary type="html">整理了一些近一年来玩过的容器。</summary>
+    
+    
+    
+    <category term="小知识" scheme="https://www.wanyunr.com/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="Docker" scheme="https://www.wanyunr.com/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用腾讯云 COS 同步思源笔记（S3 模式）</title>
+    <link href="https://www.wanyunr.com/siyuan-s3-cos.html"/>
+    <id>https://www.wanyunr.com/siyuan-s3-cos.html</id>
+    <published>2023-02-20T19:09:05.000Z</published>
+    <updated>2023-02-20T19:09:05.000Z</updated>
+    
+    
+    <summary type="html">本文介绍了如何使用腾讯云COS来同步思源笔记。需要准备腾讯云账号、一个私有读写的储存桶以及子用户的Key。具体步骤包括注册腾讯云账号、完成实名认证、准备子用户和访问密钥、开通COS服务以及填写思源笔记S3同步的表格。同时提供了参考链接。</summary>
+    
+    
+    
+    <category term="杂谈" scheme="https://www.wanyunr.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="腾讯云" scheme="https://www.wanyunr.com/tags/%E8%85%BE%E8%AE%AF%E4%BA%91/"/>
+    
+    <category term="S3" scheme="https://www.wanyunr.com/tags/S3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>脚本存档 （不定期更新）</title>
+    <link href="https://www.wanyunr.com/shell.html"/>
+    <id>https://www.wanyunr.com/shell.html</id>
+    <published>2023-02-06T13:09:05.000Z</published>
+    <updated>2023-02-06T13:09:05.000Z</updated>
+    
+    
+    <summary type="html">常用存档，定期更新</summary>
+    
+    
+    
+    <category term="小知识" scheme="https://www.wanyunr.com/categories/%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="脚本" scheme="https://www.wanyunr.com/tags/%E8%84%9A%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SSH 控制台配色的折腾</title>
+    <link href="https://www.wanyunr.com/peise.html"/>
+    <id>https://www.wanyunr.com/peise.html</id>
+    <published>2023-01-03T16:09:05.000Z</published>
+    <updated>2024-04-04T12:41:26.712Z</updated>
+    
+    
+    <summary type="html">经过一番折腾，使 Debian 的 VPS 的控制台也有配色了</summary>
+    
+    
+    
+    <category term="杂谈" scheme="https://www.wanyunr.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="SSH" scheme="https://www.wanyunr.com/tags/SSH/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Porl 短网址程序中文版安装</title>
+    <link href="https://www.wanyunr.com/porl.html"/>
+    <id>https://www.wanyunr.com/porl.html</id>
+    <published>2022-12-24T08:47:00.000Z</published>
+    <updated>2024-04-04T12:41:14.901Z</updated>
+    
+    
+    <summary type="html">Porl 2.3.0中文版</summary>
+    
+    
+    
+    <category term="建站笔记" scheme="https://www.wanyunr.com/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="短网址" scheme="https://www.wanyunr.com/tags/%E7%9F%AD%E7%BD%91%E5%9D%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OneinStack安装SSL报错 &quot;ssl_stapling&quot; ignored, issuer certificate not found for certificate</title>
+    <link href="https://www.wanyunr.com/ssl_error.html"/>
+    <id>https://www.wanyunr.com/ssl_error.html</id>
+    <published>2022-12-17T04:30:00.000Z</published>
+    <updated>2024-04-04T12:37:08.092Z</updated>
+    
+    
+    <summary type="html">使用OneinStack报 nginx:[warn]&quot;ssl_stapling&quot; ignored, issuer certificate not found for certificate &quot;/usr/local/nginx/conf/ssl/example.com.crt&quot;</summary>
+    
+    
+    
+    <category term="建站笔记" scheme="https://www.wanyunr.com/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="SSL" scheme="https://www.wanyunr.com/tags/SSL/"/>
+    
+    <category term="OneinStack" scheme="https://www.wanyunr.com/tags/OneinStack/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>推荐一些目录列表程序</title>
+    <link href="https://www.wanyunr.com/downapp.html"/>
+    <id>https://www.wanyunr.com/downapp.html</id>
+    <published>2022-11-19T16:10:00.000Z</published>
+    <updated>2024-04-04T12:39:52.337Z</updated>
+    
+    
+    <summary type="html">目录列表程序是一个简单的提供文件下载和浏览的程序，一般用来做下载站和简易网盘。本篇文章就来整理汇总一下优秀的目录列表程序</summary>
+    
+    
+    
+    <category term="建站笔记" scheme="https://www.wanyunr.com/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="网盘" scheme="https://www.wanyunr.com/tags/%E7%BD%91%E7%9B%98/"/>
+    
+    <category term="目录程序" scheme="https://www.wanyunr.com/tags/%E7%9B%AE%E5%BD%95%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>给博客换了Butterfly主题</title>
+    <link href="https://www.wanyunr.com/theme.html"/>
+    <id>https://www.wanyunr.com/theme.html</id>
+    <published>2022-11-18T14:00:00.000Z</published>
+    <updated>2024-04-04T12:36:32.505Z</updated>
+    
+    
+    <summary type="html">博客换了Butterfly主题</summary>
+    
+    
+    
+    <category term="博客历程" scheme="https://www.wanyunr.com/categories/%E5%8D%9A%E5%AE%A2%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="Blog" scheme="https://www.wanyunr.com/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPS常用脚本</title>
+    <link href="https://www.wanyunr.com/sh.html"/>
+    <id>https://www.wanyunr.com/sh.html</id>
+    <published>2022-11-16T16:45:02.000Z</published>
+    <updated>2024-04-04T12:39:33.162Z</updated>
+    
+    
+    <summary type="html">总结平时用的比较多的一些脚本和插件</summary>
+    
+    
+    
+    <category term="建站笔记" scheme="https://www.wanyunr.com/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="脚本" scheme="https://www.wanyunr.com/tags/%E8%84%9A%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TinyFileManager文件管理器的简化、安装和调试</title>
+    <link href="https://www.wanyunr.com/8.html"/>
+    <id>https://www.wanyunr.com/8.html</id>
+    <published>2022-10-04T15:20:00.000Z</published>
+    <updated>2024-04-04T12:39:11.758Z</updated>
+    
+    
+    <summary type="html">TinyFileManager 是基于PHP的Web文件管理器.</summary>
+    
+    
+    
+    <category term="建站笔记" scheme="https://www.wanyunr.com/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="网盘" scheme="https://www.wanyunr.com/tags/%E7%BD%91%E7%9B%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在Linux上使用宝塔面板安装 iFileSpace</title>
+    <link href="https://www.wanyunr.com/7.html"/>
+    <id>https://www.wanyunr.com/7.html</id>
+    <published>2022-09-14T05:20:00.000Z</published>
+    <updated>2024-04-04T12:38:27.498Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;官方教程：&lt;a href=&quot;https://ifile.space/docs&quot; rel=&quot;external nofollow noreferrer&quot;&gt;https://ifile.space/docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;视频教程：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="建站笔记" scheme="https://www.wanyunr.com/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="网盘" scheme="https://www.wanyunr.com/tags/%E7%BD%91%E7%9B%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>推荐两个私有云方案及其搭建教程</title>
+    <link href="https://www.wanyunr.com/6.html"/>
+    <id>https://www.wanyunr.com/6.html</id>
+    <published>2022-08-25T06:40:00.000Z</published>
+    <updated>2024-04-04T12:32:55.923Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天我推荐两个比较好用的私人网盘：Cloudreve和iFlieSpace。&lt;/p&gt;
+&lt;p&gt;Cloudreve：如果你需要一个相对简单的网盘，这个挺适合，强大的离线下载功能，支持七牛云等第三方云存储，支持视频音频文档等文件的在线预览，响应式的设计使得在移动设备上也有良好的阅</summary>
+        
+      
+    
+    
+    
+    <category term="建站笔记" scheme="https://www.wanyunr.com/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="网盘" scheme="https://www.wanyunr.com/tags/%E7%BD%91%E7%9B%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用又拍云CDN给hexo博客加速详细设置</title>
+    <link href="https://www.wanyunr.com/5.html"/>
+    <id>https://www.wanyunr.com/5.html</id>
+    <published>2022-07-24T06:40:00.000Z</published>
+    <updated>2024-04-04T12:24:58.023Z</updated>
+    
+    
+    <summary type="html">使用又拍云加速网站</summary>
+    
+    
+    
+    <category term="建站笔记" scheme="https://www.wanyunr.com/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Blog" scheme="https://www.wanyunr.com/tags/Blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Window 10 解决文件夹属性没有安全等选项</title>
+    <link href="https://www.wanyunr.com/4.html"/>
+    <id>https://www.wanyunr.com/4.html</id>
+    <published>2022-07-14T15:40:00.000Z</published>
+    <updated>2024-04-04T12:39:28.686Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;此方案用于解决win 10 家庭版，没有本地组策略编辑器以及取消勾选&lt;strong&gt;使用共享导向&lt;/strong&gt;（如下图）无效的情况&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://www.wanyunr.com/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="Windows" scheme="https://www.wanyunr.com/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Window中使用Hexo与Github搭建个人博客</title>
+    <link href="https://www.wanyunr.com/3.html"/>
+    <id>https://www.wanyunr.com/3.html</id>
+    <published>2022-07-14T14:40:00.000Z</published>
+    <updated>2024-04-04T12:36:16.282Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;安装-Hexo及配置环境&quot;&gt;&lt;a href=&quot;#安装-Hexo及配置环境&quot; class=&quot;headerlink&quot; title=&quot;安装 Hexo及配置环境&quot;&gt;&lt;/a&gt;安装 Hexo及配置环境&lt;/h3&gt;&lt;p&gt;推荐官方文档 &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="博客历程" scheme="https://www.wanyunr.com/categories/%E5%8D%9A%E5%AE%A2%E5%8E%86%E7%A8%8B/"/>
+    
+    
+    <category term="Windows" scheme="https://www.wanyunr.com/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node.js安装及环境配置教程</title>
+    <link href="https://www.wanyunr.com/2.html"/>
+    <id>https://www.wanyunr.com/2.html</id>
+    <published>2022-07-10T11:25:00.000Z</published>
+    <updated>2024-04-04T12:38:56.253Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Step1：下载安装包&quot;&gt;&lt;a href=&quot;#Step1：下载安装包&quot; class=&quot;headerlink&quot; title=&quot;Step1：下载安装包&quot;&gt;&lt;/a&gt;Step1：下载安装包&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="建站笔记" scheme="https://www.wanyunr.com/categories/%E5%BB%BA%E7%AB%99%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Windows" scheme="https://www.wanyunr.com/tags/Windows/"/>
+    
+  </entry>
+  
+</feed>
