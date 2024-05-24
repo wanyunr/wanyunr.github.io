@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Docker 搭建headscale服务端与derper中转 | 水云清</title><meta name="author" content="『 寻 』"><meta name="copyright" content="『 寻 』"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#fffde6"><meta name="description" content="headscale 有关项目 juanfont&#x2F;headscale : Tailscale control server ⭐️ Docker headscale&#x2F;headscale ⭐️ iFargle&#x2F;headscale-webui: A simple Headscale web UI niliovo&#x2F;zerotier-aio-zh: ztncui-aio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 搭建headscale服务端与derper中转">
+<meta property="og:url" content="https://www.wanyunr.com/clwkvm47w000sdsp4hhidap11.html">
+<meta property="og:site_name" content="水云清">
+<meta property="og:description" content="headscale 有关项目 juanfont&#x2F;headscale : Tailscale control server ⭐️ Docker headscale&#x2F;headscale ⭐️ iFargle&#x2F;headscale-webui: A simple Headscale web UI niliovo&#x2F;zerotier-aio-zh: ztncui-aio">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.ziyuan.wang/2022/cd284922a3b36.jpg">
+<meta property="article:published_time" content="2024-05-24T14:59:59.000Z">
+<meta property="article:modified_time" content="2024-05-24T15:32:25.000Z">
+<meta property="article:author" content="『 寻 』">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="组网">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="转载">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.ziyuan.wang/2022/cd284922a3b36.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.wanyunr.com/clwkvm47w000sdsp4hhidap11.html"><link rel="preconnect" href="https://lib.baomitu.com"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="7FLZdWgLPslXiJye"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/6.4.2/css/all.min.css"><link rel="stylesheet" href="https://lib.baomitu.com/fancyapps-ui/5.0.28/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?829d4dd679973ff6923e3ac9c7a7aee8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-VE4CHD4FMQ"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VE4CHD4FMQ');
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":180,"position":"top","messagePrev":"距离上次更新已经","messageNext":"天了，文章内容可能已经过时了。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://lib.baomitu.com/egjs-infinitegrid/4.11.0/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Docker 搭建headscale服务端与derper中转',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-24 23:32:25'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fffde6')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="https://lib.baomitu.com/lxgw-wenkai-screen-webfont/1.6.0/style.min.css" /><link rel="preconnect" href="https://use.sevencdn.com"><link href="https://use.sevencdn.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="水云清" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="水云清"><span class="site-name">水云清</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Docker 搭建headscale服务端与derper中转</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-24T14:59:59.000Z" title="发表于 2024-05-24 22:59:59">2024-05-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-24T15:32:25.000Z" title="更新于 2024-05-24 23:32:25">2024-05-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/">技术教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Docker 搭建headscale服务端与derper中转"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="headscale"><a href="#headscale" class="headerlink" title="headscale"></a>headscale</h2><blockquote>
+<h4 id="有关项目"><a href="#有关项目" class="headerlink" title="有关项目"></a>有关项目</h4><ul>
+<li><a target="_blank" href="https://github.com/juanfont/headscale" rel="external nofollow noreferrer noopener">juanfont&#x2F;headscale : Tailscale control server</a></li>
+<li><a target="_blank" href="https://hub.docker.com/r/headscale/headscale/" rel="external nofollow noreferrer noopener">⭐️ Docker headscale&#x2F;headscale</a></li>
+<li><a target="_blank" href="https://github.com/iFargle/headscale-webui" rel="external nofollow noreferrer noopener">⭐️ iFargle&#x2F;headscale-webui: A simple Headscale web UI</a></li>
+<li><a target="_blank" href="https://github.com/niliovo/zerotier-aio-zh" rel="external nofollow noreferrer noopener">niliovo&#x2F;zerotier-aio-zh: ztncui-aio的Docker镜像中文版本</a></li>
+<li><a target="_blank" href="https://github.com/gurucomputing/headscale-ui" rel="external nofollow noreferrer noopener">gurucomputing&#x2F;headscale-ui: A web frontend for the headscale Tailscale</a></li>
+</ul>
+<h4 id="有关教程"><a href="#有关教程" class="headerlink" title="有关教程"></a>有关教程</h4><ul>
+<li>⭐️ <a target="_blank" href="https://www.nodeseek.com/post-37577-1" rel="external nofollow noreferrer noopener">Docker 搭建 headscale 异地组网完整教程</a> （主要参考）</li>
+<li><a target="_blank" href="https://blog.yfyang.me/blog/headscale-Tailscale" rel="external nofollow noreferrer noopener">TailScale+Headscale 局域网组网全记录 | NorthSecond&amp;apos;s Blog</a> || <a target="_blank" href="https://www.amjun.com/1957.html" rel="external nofollow noreferrer noopener">Docker 搭建 headscale 异地组网完整教程 - 阿蛮君博客</a></li>
+<li><a target="_blank" href="https://www.nodeseek.com/post-31284-1" rel="external nofollow noreferrer noopener">[原创教程]headscale服务自建derp服务器，加速双端连接效率</a></li>
+</ul>
+</blockquote>
+<p>‍</p>
+<h3 id="搭建headscale服务端"><a href="#搭建headscale服务端" class="headerlink" title="搭建headscale服务端"></a>搭建headscale服务端</h3><h4 id="1-创建相关文件"><a href="#1-创建相关文件" class="headerlink" title="1. 创建相关文件"></a>1. 创建相关文件</h4><p>创建 db.sqlite，再下载官网给的配置文件示例，然后按需修改。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /home/docker/headscale/config &amp;&amp; mkdir -p /home/docker/headscale/data &amp;&amp; \</span><br><span class="line"></span><br><span class="line">touch /home/docker/headscale/data/db.sqlite &amp;&amp; \</span><br><span class="line"></span><br><span class="line">wget https://github.com/juanfont/headscale/raw/v0.22.3/config-example.yaml -O /home/docker/headscale/config/config.yaml</span><br></pre></td></tr></table></figure>
+
+<p>需要修改<strong>下载镜像对应版本号</strong>的 <code>config-example.yaml</code>​，否则可能配置文件无法对应导致启动报错。</p>
+<h4 id="2-修改配置"><a href="#2-修改配置" class="headerlink" title="2. 修改配置"></a>2. 修改配置</h4><p>修改相关配置文件，比如配置文件中配置 <code>127.0.0.1</code>​ 的话，那么就只能本机访问。这里修改为 <code>0.0.0.0</code>​ 那么就所有的 ip 都能访问（建议先使用<code>0.0.0.0</code>​，部署好后可尝试修改<code>127.0.0.1</code>​测试是否正常）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vim /home/docker/headscale/config/config.yaml</span><br><span class="line"></span><br><span class="line"># 这将修改以下几个地方，其中server_url还需要另外修改</span><br><span class="line"># 1. server_url: https://example.com</span><br><span class="line"># 2. listen_addr: 0.0.0.0:8080</span><br><span class="line"># 3. metrics_listen_addr: 0.0.0.0:9090</span><br><span class="line"># 4. grpc_listen_addr: 0.0.0.0:50443</span><br><span class="line"># 5. nameservers:</span><br><span class="line">      - 119.29.29.29  （可选，如服务器再国内，最好加一个国内DNS）</span><br><span class="line">      - 1.1.1.1</span><br><span class="line"># 开随机端口</span><br><span class="line"># 6. randomize_client_port: true</span><br><span class="line"># 以通过 主机名 + 用户 + 基础域名 访问任意一台终端</span><br><span class="line"># 7. base_domain: wanyunr.com</span><br></pre></td></tr></table></figure>
+
+<p>建议使用域名反代，否则可能出现某些安全验证问题</p>
+<h4 id="3-启用内嵌的-derp"><a href="#3-启用内嵌的-derp" class="headerlink" title="3. 启用内嵌的 derp"></a>3. <strong>启用内嵌的 derp</strong></h4><p>当然你可以使用官方提供的 derp 服务器，但如果你想搭建自己的 derp 服务器，又不想另外搭建一个 derp 服务器，那么这是有必要的。</p>
+<p>注意：使用此 derp 服务器，需要有域名并配置 ssl，否则请参考：<a target="_blank" href="https://www.amjun.com/1976.html" rel="external nofollow noreferrer noopener">Docker 搭建中继服务器 derp - 纯 IP 实现</a> 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># /home/docker/headscale/config/config.yaml</span><br><span class="line">derp:</span><br><span class="line">  server:</span><br><span class="line"># xxx</span><br><span class="line">    enabled: true</span><br><span class="line"># xxx</span><br><span class="line">    region_id: 999</span><br><span class="line"># xxx</span><br><span class="line">    region_code: &quot;headscale&quot;</span><br><span class="line">    region_name: &quot;Headscale Embedded DERP&quot;</span><br><span class="line"># xxx</span><br><span class="line">    stun_listen_addr: &quot;0.0.0.0:3478&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>enabled</code>​ 选项默认为 false，需要设置为 true。</p>
+<h4 id="4-启动"><a href="#4-启动" class="headerlink" title="4. 启动"></a>4. 启动</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name headscale \</span><br><span class="line">--restart always \</span><br><span class="line">-v /root/docker_data/headscale/config:/etc/headscale/ \</span><br><span class="line">-v /root/docker_data/headscale/data:/var/lib/headscale \</span><br><span class="line">-p 8080:8080 \</span><br><span class="line">-p 9090:9090 \</span><br><span class="line">-p 3478:3478/udp \</span><br><span class="line">--restart always \</span><br><span class="line">headscale/headscale:0.22.3 \</span><br><span class="line">headscale serve</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="5-常用命令"><a href="#5-常用命令" class="headerlink" title="5. 常用命令"></a>5. 常用命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看用户</span><br><span class="line">docker exec -it headscale headscale users ls</span><br><span class="line"># 创建用户</span><br><span class="line">docker exec -it headscale headscale users create &lt;user&gt;</span><br><span class="line"># 生成apikey</span><br><span class="line">docker exec -it headscale headscale apikey create</span><br><span class="line"># 查询apikey</span><br><span class="line">docker exec -it headscale headscale apikey ls</span><br></pre></td></tr></table></figure>
+
+<p>‍</p>
+<h3 id="二、搭建web-ui"><a href="#二、搭建web-ui" class="headerlink" title="二、搭建web-ui"></a>二、搭建web-ui</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name headscale-webui \</span><br><span class="line">--restart always \</span><br><span class="line">-v /root/docker_data/headscale/config:/etc/headscale/:ro \</span><br><span class="line">-v /root/docker_data/headscale/web-ui/data:/data \</span><br><span class="line">-u root \</span><br><span class="line">-p 5000:5000 \</span><br><span class="line">-e HS_SERVER=https://wanyunr.com \</span><br><span class="line">-e DOMAIN_NAME=https://wanyunr.com \</span><br><span class="line">-e SCRIPT_NAME=/admin \</span><br><span class="line">-e AUTH_TYPE=Basic \</span><br><span class="line">-e BASIC_AUTH_USER=user \</span><br><span class="line">-e BASIC_AUTH_PASS=passwd \</span><br><span class="line">-e KEY=&quot;xxxxxxxxxxxxJdVjaE=&quot; \</span><br><span class="line">--restart always \</span><br><span class="line">ifargle/headscale-webui:latest</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>/home/docker/headscale/config</code>​ 为上面服务端的映射目录，这两个目录需要一致。<code>HS_SERVER</code>​ 和 <code>DOMAIN_NAME</code>​ 填写自己的域名 1。<code>KEY</code>​ 是用来加密待会需要保存的 apikey 的字符串，使用命令 <code>openssl rand -base64 32</code>​ 生成。</p>
+<p>接下来需要创建 headscale 服务器的 api-key，这里设置一个比较久的过期时间。</p>
+<p>‍</p>
+<h3 id="三、配置-nginx-和-web-ui"><a href="#三、配置-nginx-和-web-ui" class="headerlink" title="三、配置 nginx 和 web-ui"></a>三、配置 nginx 和 web-ui</h3><h4 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl;</span><br><span class="line">    listen  [::]:443 ssl;</span><br><span class="line">    server_name wanyunr.com;</span><br><span class="line">    ssl_certificate /www/sites/wanyunr.com/ssl/fullchain.pem; </span><br><span class="line">    ssl_certificate_key /www/sites/wanyunr.com/ssl/privkey.pem; </span><br><span class="line">    # ssl_protocols TLSv1.3 TLSv1.2 TLSv1.1 TLSv1; </span><br><span class="line">    # ssl_ciphers EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5; </span><br><span class="line">    # ssl_prefer_server_ciphers on; </span><br><span class="line">    # ssl_session_cache shared:SSL:10m; </span><br><span class="line">    # ssl_session_timeout 10m; </span><br><span class="line">    # add_header Strict-Transport-Security &quot;max-age=31536000&quot;; </span><br><span class="line">    # error_page 497 https://$host$request_uri; </span><br><span class="line">    # proxy_set_header X-Forwarded-Proto https; </span><br><span class="line">    # ssl_stapling on; </span><br><span class="line">    # ssl_stapling_verify on; </span><br><span class="line"></span><br><span class="line">    location ^~/ &#123;</span><br><span class="line">        proxy_pass http://localhost:8080/;</span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">        proxy_set_header Host $server_name;</span><br><span class="line">        proxy_redirect https:// https://;</span><br><span class="line">        proxy_buffering off;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ^~/admin/ &#123;</span><br><span class="line">        proxy_pass http://localhost:5000/admin/;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name  wanyunr.com;</span><br><span class="line">    rewrite ^(.*)$ https://$host:443$1 permanent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>保存配置后重启 nginx后，如果配置正确，通过 <code>https://域名/admin</code>​ 应该可以访问到 web-ui 界面，输入容器启动时配置的用户名密码即可进入。</p>
+<p>‍</p>
+<ol start="2">
+<li><h4 id="配置-web-ui"><a href="#配置-web-ui" class="headerlink" title="配置 web-ui"></a>配置 web-ui</h4></li>
+</ol>
+<p>上面提示输入 apikey，这个需要 headscale 服务端生成，这里设置一个比较长的时间，根据自己的需要即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it headscale headscale apikeys create -e 10000d</span><br></pre></td></tr></table></figure>
+
+<p>运行命令后将生成的 key 输入，点击 save 即可</p>
+<h3 id="四、创建用户和授权密钥"><a href="#四、创建用户和授权密钥" class="headerlink" title="四、创建用户和授权密钥"></a>四、创建用户和授权密钥</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#  创建用户</span><br><span class="line"></span><br><span class="line">docker exec -it headscale headscale users create hz</span><br></pre></td></tr></table></figure>
+
+<p>授权密码的作用是，客户端登陆时不需要再服务端进行确认，阿蛮君总是喜欢使用简单的方式，所以就选择这种方式了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># reusable 参数代表可以重复使用，不加的话密钥只能用来一个客户端加入</span><br><span class="line"></span><br><span class="line">docker exec -it headscale headscale preauthkeys create -e 10000d --reusable -u hz</span><br><span class="line"></span><br><span class="line"># 查看密钥 </span><br><span class="line"></span><br><span class="line">docker exec -it headscale headscale preauthkeys list -u hz</span><br></pre></td></tr></table></figure>
+
+<p>这里记得记录好授权密钥，下面将会用到。</p>
+<h4 id="客户端安装"><a href="#客户端安装" class="headerlink" title="客户端安装"></a>客户端安装</h4><p>headscale 相当于是重新实现了 tailscale 的服务端，客户端基本还是用的 tailscale。</p>
+<p>tailscale 客户端下载地址：<a target="_blank" href="https://tailscale.com/download/" rel="external nofollow noreferrer noopener">https://tailscale.com/download/</a></p>
+<h5 id="1-windows"><a href="#1-windows" class="headerlink" title="1. windows"></a>1. windows</h5><p><strong>1.1 安装客户端</strong></p>
+<p>下载 windows 客户端并进行安装。</p>
+<p><strong>1.2 安装注册表</strong></p>
+<p>访问 <code>https://wanyunr.com/windows</code>​，可以看见配置的教程。</p>
+<p>提示需要修改注册表，这里可以直接 访问<code>https://wanyunr.com/windows/tailscale.reg</code>​ 下载文件后，双击运行文件进行安装即可。</p>
+<p><strong>1.3 登录</strong></p>
+<p>在 tailscale 的安装目录下使用 cmd 打开，输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tailscale login --login-server https://wanyunr.com --authkey e5bc07f5325dd282563295f03b7894dd686416b47798c998 --accept-dns=false --accept-routes</span><br></pre></td></tr></table></figure>
+
+<p>这里的 authkey 是第四步生成的，然后在服务器使用命令查看。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it headscale headscale nodes &lt;username&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-linux"><a href="#2-linux" class="headerlink" title="2. linux"></a>2. linux</h5><p><strong>2.1 脚本安装</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://tailscale.com/install.sh | sh &amp;&amp; \</span><br><span class="line"></span><br><span class="line">tailscale login --login-server https://head.uve.cc --authkey e5bc07f5325dd282563295f03b7894dd686416b47798c998 --accept-dns=false --accept-routes</span><br></pre></td></tr></table></figure>
+
+<p>这里仅仅安装方式不同，登录的命令完全一样。</p>
+<h5 id="2-2-docker-安装"><a href="#2-2-docker-安装" class="headerlink" title="2.2 docker 安装"></a>2.2 docker 安装</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line"></span><br><span class="line">--name=tailscaled \</span><br><span class="line"></span><br><span class="line">-v /home/docker/tailscale/:/var/lib \</span><br><span class="line"></span><br><span class="line">-v /dev/net/tun:/dev/net/tun \</span><br><span class="line"></span><br><span class="line">-e TS_STATE_DIR=/var/lib/state/ \</span><br><span class="line"></span><br><span class="line">--network=host \</span><br><span class="line"></span><br><span class="line">--restart always \</span><br><span class="line"></span><br><span class="line">--privileged tailscale/tailscale:v1.44.0 \</span><br><span class="line"></span><br><span class="line">tailscaled --tun=tailscale0 -no-logs-no-support=true</span><br></pre></td></tr></table></figure>
+
+<p>这里需要将 <code>TS_STATE_DIR</code>​ 指定的文件夹持久化，否则删除容器再新建后，在服务端能看见重复的设备。并且需要指定 <code>--tun=tailscale0</code>​，不然似乎不能在宿主机创建网卡。</p>
+<p>然后使用如下命令进行登录。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it tailscaled tailscale login --login-server https://wanyunr.com --accept-dns=false --accept-routes=false --authkey b6a9b4f4e9c3a7c7e7b9b1a3a6b9e6b7a5e7c2a1e3a0a4a1 --advertise-routes=172.21.9.0/24,172.30.1.0/24,172.26.1.0/24,172.20.2.0/23</span><br></pre></td></tr></table></figure>
+
+<p>根据自己网络情况设置 <code>--advertise-routes</code>​，我这是需要通过这台内网机器访问公司其他网络。</p>
+<p>如果出现如下错误：</p>
+<blockquote>
+<p>running [&#x2F;sbin&#x2F;ip6tables -t filter -N ts-input –wait]: exit status 3: modprobe: can’t change directory to ‘&#x2F;lib&#x2F;modules’: No such file or directory<br>ip6tables v1.8.8 (legacy): can’t initialize ip6tables table &#96;filter’: Table does not exist (do you need to insmod?)<br>Perhaps ip6tables or your kernel needs to be upgraded</p>
+</blockquote>
+<p>执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 防止探测ip6table</span><br><span class="line"></span><br><span class="line">sudo modprobe ip6table_filter</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-安卓"><a href="#3-安卓" class="headerlink" title="3. 安卓"></a>3. 安卓</h5><p><strong>3.1 安装并配置</strong></p>
+<p><a target="_blank" href="https://f-droid.org/packages/com.tailscale.ipn/" rel="external nofollow noreferrer noopener">f-droid 下载</a></p>
+<p>安装后，点击右上角三个设置自定义登录地址，点击 Login in，会出现一串命令，复制<code>key</code>​后面的部分</p>
+<p><strong>3.2 手机端注册命令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it headscale headscale nodes register --user &lt;username&gt; --key nodekey:10xxxxxxxxxxxxxxxxxxxxxxxxx</span><br></pre></td></tr></table></figure>
+
+<p>‍</p>
+<h2 id="derper"><a href="#derper" class="headerlink" title="derper"></a>derper</h2><blockquote>
+<ul>
+<li>⭐️ <a target="_blank" href="https://icloudnative.io/posts/custom-derp-servers/" rel="external nofollow noreferrer noopener">Part : Tailscale 基础教程：部署私有 DERP 中继服务器</a></li>
+<li><a target="_blank" href="https://www.amjun.com/1975.html" rel="external nofollow noreferrer noopener">Docker 搭建中继服务器 derp - 需要域名并配置 ssl - 阿蛮君博客</a></li>
+</ul>
+</blockquote>
+<h3 id="有ssl证书"><a href="#有ssl证书" class="headerlink" title="有ssl证书"></a>有ssl证书</h3><blockquote>
+<p>没有搭建成功，需要可参考：</p>
+<p><a target="_blank" href="https://www.amjun.com/1975.html" rel="external nofollow noreferrer noopener">Docker 搭建中继服务器 derp - 需要域名并配置 ssl - 阿蛮君博客</a></p>
+<p><a target="_blank" href="https://icloudnative.io/posts/custom-derp-servers/#%E4%BD%BF%E7%94%A8%E5%9F%9F%E5%90%8D" rel="external nofollow noreferrer noopener">Tailscale 基础教程：部署私有 DERP 中继服务器</a></p>
+</blockquote>
+<h3 id="无证书模式"><a href="#无证书模式" class="headerlink" title="无证书模式"></a>无证书模式</h3><blockquote>
+<p>原理：将域名验证相关的内容删除或注释，并创建自签名证书。除了 derper 之外，Tailscale 客户端还需要<strong>跳过域名验证</strong>，这个需要在 DERP 的配置中设置。而 Headscale 的本地 YAML 文件目前还不支持这个配置项，需要使用在线 URL。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># host模式，需要443端口</span><br><span class="line">docker run -d \</span><br><span class="line">  --restart always \</span><br><span class="line">  --net host \</span><br><span class="line">  --name derper \</span><br><span class="line">  ghcr.io/yangchuansheng/derper:latest</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># bridge 模式</span><br><span class="line">docker run -d \</span><br><span class="line">  --restart always \</span><br><span class="line">  -p 3478:3478/udp \</span><br><span class="line">  -p 8443:443 \</span><br><span class="line">  --name derper \</span><br><span class="line">  ghcr.io/yangchuansheng/ip_derper</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>‍</p>
+<h3 id="使用节点"><a href="#使用节点" class="headerlink" title="使用节点"></a>使用节点</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/headscale/config.yaml</span></span><br><span class="line">derp:</span><br><span class="line">  <span class="comment"># List of externally available DERP maps encoded in JSON</span></span><br><span class="line">  urls:</span><br><span class="line">  <span class="comment">#  - https://controlplane.tailscale.com/derpmap/default</span></span><br><span class="line">    - https://xxxxx/derp.json</span><br><span class="line">  paths: []</span><br></pre></td></tr></table></figure>
+
+<p>‍</p>
+<p>‍</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;Regions&quot;: &#123;</span><br><span class="line"><span class="code">    &quot;1&quot;: &#123;</span></span><br><span class="line"><span class="code">      &quot;RegionID&quot;: 1,</span></span><br><span class="line"><span class="code">      &quot;RegionCode&quot;: &quot;ali-sh&quot;,</span></span><br><span class="line"><span class="code">      &quot;RegionName&quot;: &quot;Aliyun GuangZhou&quot;,</span></span><br><span class="line"><span class="code">      &quot;Nodes&quot;: [</span></span><br><span class="line"><span class="code">        &#123;</span></span><br><span class="line"><span class="code">          &quot;Name&quot;: &quot;1&quot;,</span></span><br><span class="line"><span class="code">          &quot;RegionID&quot;: 901,</span></span><br><span class="line"><span class="code">          &quot;DERPPort&quot;: 443,</span></span><br><span class="line"><span class="code">          &quot;HostName&quot;: &quot;xxxx&quot;,</span></span><br><span class="line"><span class="code">          &quot;IPv4&quot;: &quot;xxxx&quot;,</span></span><br><span class="line"><span class="code">          &quot;InsecureForTests&quot;: true</span></span><br><span class="line"><span class="code">        &#125;</span></span><br><span class="line"><span class="code">      ]</span></span><br><span class="line"><span class="code">    &#125;</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br></pre></td></tr></table></figure>
+
+<p>配置解析：</p>
+<ul>
+<li><code>HostName</code>​ 直接填 derper 的公网 IP，即和 <code>IPv4</code>​ 的值相同。</li>
+<li><code>InsecureForTests</code>​ 一定要设置为 true，以跳过域名验证（<strong>必须配置</strong>）</li>
+</ul>
+<h3 id="derper-查用命令"><a href="#derper-查用命令" class="headerlink" title="derper 查用命令"></a>derper 查用命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># docker 运行的客户端</span><br><span class="line">docker exec -it tailscaled tailscale netcheck</span><br><span class="line"># 非 docker 运行的客户端</span><br><span class="line">tailscale netcheck</span><br><span class="line"></span><br><span class="line">#使用 tailscale status 命令可以查看到当前网络的状态</span><br><span class="line"># docker 运行的客户端</span><br><span class="line">docker exec -it tailscaled tailscale status</span><br><span class="line"># 非 docker 运行的客户端</span><br><span class="line">tailscale status</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.wanyunr.com">『 寻 』</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.wanyunr.com/clwkvm47w000sdsp4hhidap11.html">https://www.wanyunr.com/clwkvm47w000sdsp4hhidap11.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.wanyunr.com" target="_blank">水云清</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/%E7%BB%84%E7%BD%91/">组网</a><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/%E8%BD%AC%E8%BD%BD/">转载</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">『 寻 』</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">20</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:wanyunr#outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.wanyunr.com/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#headscale"><span class="toc-number">1.</span> <span class="toc-text">headscale</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.0.1.</span> <span class="toc-text">有关项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E6%95%99%E7%A8%8B"><span class="toc-number">1.0.2.</span> <span class="toc-text">有关教程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BAheadscale%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-number">1.1.</span> <span class="toc-text">搭建headscale服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 创建相关文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. 修改配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%90%AF%E7%94%A8%E5%86%85%E5%B5%8C%E7%9A%84-derp"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. 启用内嵌的 derp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%90%AF%E5%8A%A8"><span class="toc-number">1.1.4.</span> <span class="toc-text">4. 启动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. 常用命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%90%AD%E5%BB%BAweb-ui"><span class="toc-number">1.2.</span> <span class="toc-text">二、搭建web-ui</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%85%8D%E7%BD%AE-nginx-%E5%92%8C-web-ui"><span class="toc-number">1.3.</span> <span class="toc-text">三、配置 nginx 和 web-ui</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-nginx"><span class="toc-number">1.3.1.</span> <span class="toc-text">配置 nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-web-ui"><span class="toc-number">1.3.2.</span> <span class="toc-text">配置 web-ui</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%92%8C%E6%8E%88%E6%9D%83%E5%AF%86%E9%92%A5"><span class="toc-number">1.4.</span> <span class="toc-text">四、创建用户和授权密钥</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.1.</span> <span class="toc-text">客户端安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-windows"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">1. windows</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-linux"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">2. linux</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-docker-%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">2.2 docker 安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E5%AE%89%E5%8D%93"><span class="toc-number">1.4.1.4.</span> <span class="toc-text">3. 安卓</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#derper"><span class="toc-number">2.</span> <span class="toc-text">derper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89ssl%E8%AF%81%E4%B9%A6"><span class="toc-number">2.1.</span> <span class="toc-text">有ssl证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E8%AF%81%E4%B9%A6%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">无证书模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%8A%82%E7%82%B9"><span class="toc-number">2.3.</span> <span class="toc-text">使用节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#derper-%E6%9F%A5%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.4.</span> <span class="toc-text">derper 查用命令</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/clwkvm47w000sdsp4hhidap11.html" title="Docker 搭建headscale服务端与derper中转"><img src="https://pic.ziyuan.wang/2022/cd284922a3b36.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker 搭建headscale服务端与derper中转"/></a><div class="content"><a class="title" href="/clwkvm47w000sdsp4hhidap11.html" title="Docker 搭建headscale服务端与derper中转">Docker 搭建headscale服务端与derper中转</a><time datetime="2024-05-24T14:59:59.000Z" title="发表于 2024-05-24 22:59:59">2024-05-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/apt-install-syncthing.html" title="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing"><img src="https://blog.463333.xyz/blog/2024/04/660ea060b30b8.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing"/></a><div class="content"><a class="title" href="/apt-install-syncthing.html" title="Syncthing – 在 Ubuntu/Debian 上安装 Syncthing">Syncthing – 在 Ubuntu/Debian 上安装 Syncthing</a><time datetime="2023-11-24T13:40:23.111Z" title="发表于 2023-11-24 21:40:23">2023-11-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/qiniu-siyuan.html" title="使用七牛云同步思源笔记（全指南）">使用七牛云同步思源笔记（全指南）</a><time datetime="2023-07-02T07:24:07.000Z" title="发表于 2023-07-02 15:24:07">2023-07-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By 『 寻 』</div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://hexo.io/"><img src="/img/hexo.svg" alt=""></a>&nbsp;<a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><img src="/img/butterfly.svg" alt=""></a>&nbsp;<a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="/img/ypy.svg" alt=""></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://lib.baomitu.com/fancyapps-ui/5.0.28/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

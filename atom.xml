@@ -6,7 +6,7 @@
   <link href="https://www.wanyunr.com/atom.xml" rel="self"/>
   
   <link href="https://www.wanyunr.com/"/>
-  <updated>2024-04-04T12:43:27.597Z</updated>
+  <updated>2024-05-24T15:32:25.000Z</updated>
   <id>https://www.wanyunr.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker 搭建headscale服务端与derper中转</title>
+    <link href="https://www.wanyunr.com/clwkvm47w000sdsp4hhidap11.html"/>
+    <id>https://www.wanyunr.com/clwkvm47w000sdsp4hhidap11.html</id>
+    <published>2024-05-24T14:59:59.000Z</published>
+    <updated>2024-05-24T15:32:25.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;headscale&quot;&gt;&lt;a href=&quot;#headscale&quot; class=&quot;headerlink&quot; title=&quot;headscale&quot;&gt;&lt;/a&gt;headscale&lt;/h2&gt;&lt;blockquote&gt;
+&lt;h4 id=&quot;有关项目&quot;&gt;&lt;a href=&quot;#有关项目&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术教程" scheme="https://www.wanyunr.com/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Linux" scheme="https://www.wanyunr.com/tags/Linux/"/>
+    
+    <category term="组网" scheme="https://www.wanyunr.com/tags/%E7%BB%84%E7%BD%91/"/>
+    
+    <category term="教程" scheme="https://www.wanyunr.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="转载" scheme="https://www.wanyunr.com/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Syncthing – 在 Ubuntu/Debian 上安装 Syncthing</title>
